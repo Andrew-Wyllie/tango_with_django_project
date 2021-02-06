@@ -1,5 +1,5 @@
 from django.db import models
-from django.template.deflautfilters import slugify
+from django.template.defaultfilters import slugify
 
 # Create your models here.
 

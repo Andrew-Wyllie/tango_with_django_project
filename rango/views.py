@@ -3,7 +3,6 @@ from django.shortcuts import render
 # Create your views here.
 
 from django.http import HttpResponse
-
 from rango.models import Category
 from rango.models import Page
 
@@ -24,13 +23,13 @@ def index(request):
 	return render(request, 'rango/index.html', context=context_dict)
 
 def about(request):
-	return HttpResponse('Rango says here is the about page.')
+	return render(request, 'rango/about.html')
 
-def show_category(request, category_name_slug)
+def show_category(request, category_name_slug):
 	context_dict = {}
 
 	try:
-		category = CAtegory.objects.get(slug=category_name_slug)
+		category = Category.objects.get(slug=category_name_slug)
 		pages = Page.objects.fliter(category=category)
 		context_dict['page'] = pages
 		context_dict['category']
@@ -41,17 +40,17 @@ def show_category(request, category_name_slug)
 	return render(request, 'rango/category.html', context=context_dict)
 	
 def add_category(request):
-	form = CAtegoryForm()
+	form = CategoryForm()
 
 	if request.method == 'POST':
-		form = categoryForm(request.POST)
+		form = CategoryForm(request.POST)
 
 		if form.is_valid():
 			form.save(commit=True)
 			return redirect('/rango/')
 		else:
 			print(form.errors)
-
+	return render(request, 'rango/add_category.html', {'form': form})
 
 	
 
