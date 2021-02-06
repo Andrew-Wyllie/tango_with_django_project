@@ -1,26 +1,19 @@
 <!DOCTYPE html>
 
+{% extends 'rango/base.html' %}
 {% load staticfiles %}
+{% block title_block %}
+	<h1>About</h1>
+	<title>About</title>
+{% endblock %}
 
-<html>
-	<head>
-		<title>About</title>
-	</head>
-	
-	<body>
-			<h1>Rango says...</h1>
+{% block body_block %}
 		<div>
 			here is the about page<br />
 			<strong>{{ boldmessage }}</strong><br />
 		</div>
-		
 		<div>
-			<a href="/rango/add_category/">Add a New Category</a><br />
-		</div>
-
-		<div>
-			<a href="/">Back to rango</a><br />
-			<img src="{% static 'images/rango.jpg' %}"
+		<img src="{% static 'images/rango.jpg' %}"
 				 alt="Picture of Rango" /> <!-- New line -->
         </div>
 
@@ -33,5 +26,4 @@
             This tutorial has been put together by Andrew Wyllie<br />
             <strong>{{ boldmessage }}</strong><br />
         </div>
-	</body>
-</html>
+{% endblock %}
